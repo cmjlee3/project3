@@ -1,0 +1,32 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "Bucket list + tracker of all the places one has traveled to.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmjlee3/project3.git"
+  },
+  "author": "Cecil Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmjlee3/project3/issues"
+  },
+  "homepage": "https://github.com/cmjlee3/project3#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "method-override": "^2.3.7",
+    "morgan": "^1.7.0",
+    "node-fetch": "^1.6.3",
+    "path": "^0.12.7"
+  }
+}

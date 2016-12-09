@@ -1,0 +1,54 @@
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.destinations {
+    /*background-image: url("../wallpapers/water.jpg");*/
+   /* height: 100px;*/
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*#allDestinations {
+  display: block;
+  width: 100%;
+  height: 100px;
+}*/
+
+#search-results-container {
+  display: block;
+  width: 100%;
+  height: 712px;
+  overflow: scroll;
+}
+
+#singleDestination {
+  width: 95%;
+  margin: 20px auto;
+  background-color: #b56969;
+  border: 3px solid #b56969;
+  border-radius: 20px;
+}
+
+#singleDestination h1 {
+  font-size: 30px;
+  font-weight: bold;
+  border: 10px solid black;
+  border-radius: 30px;
+  margin: 0 auto;
+  width: 40vw;
+}
+
+#map {
+  display: block;
+  height: 100px;
+  width: 100vw;
+  margin: 0 auto;
+ }
