@@ -3,6 +3,7 @@
 const express      = require('express');
 const { createUser }    = require('../models/user.js');
 const { authenticate }   = require('../lib/auth');
+const { getMyListings } = require('../models/model');
 // const { } = require('../models/locations');
 // const { getMyFavorites } = require('../models/favorites');
 
@@ -21,8 +22,11 @@ usersRouter.post('/', createUser, (req, res) => { // ROUTE TO CREATE A NEW USER 
  * It redirects to /login when attempted to be reached by a non logged in user
  * It is "protected" by the authenticate middleware from the auth library
  */
-usersRouter.get('/profile', authenticate, (req, res) => {
-  res.render('users/profile', { user: res.user });
+usersRouter.get('/test2', authenticate, (req, res) => { // ROUTE TO GRAB PROFILE AND FILL OUT WITH USER SELLING LISTINGS AND FAVORITE BUY LISTINGS
+  res.render('./test2', {
+    user: res.user,
+  });
+  // res.json(res.favorites[0].favoriteListings);
 });
 
 

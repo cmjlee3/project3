@@ -1,18 +1,44 @@
 const router             = require('express').Router();
-const { getLocation } = require('../models/model');
+const { getLocations, saveLocation, getListing, editListing, deleteListing, saveFavToUser } = require('../models/model');
 const { authenticate }   = require('../lib/auth');
 
-// REFERENCING ALEX'S SELL.JS IN ROUTES
 
-// CREATE ROUTE TO GRAB ALREADY CREATED PINS (GOOGLE)
-router.get('/', authenticate, getLocation, (req,res) => {
+router.get('/', authenticate, getLocations, (req,res) => {
   res.render('./map', {
-    mapMarkers: res.allDestinations,
+    mapMarkers: res.allListings,
   })
 });
 
-// CREATE ROUTE TO FILL OUT NEW POSTING FORM (CITY/COUNTRY ALREADY TRAVELED TO, CONNECT TO GOOGLE)
+router.post('/submit', authenticate, saveLocation, (req,res) => {
+   res.render('./test');
 
+});
+
+router.get('/continue', getLocations, (req, res) => { // ROUTE TO GRAB ALL CURRENT ACTIVE LISTINGS
+  res.render('./showmap', {
+   mapMarkers: res.allListings,
+  });
+});
+
+// router.get('/:id', searchListings, getListing, (req, res) => { // ROUTE TO SEE SPECIFIC LISTING BASED ON ITS OBJECT _ID
+//   res.render('./home', {
+//     listing: res.oneListing,
+//   });
+// });
+
+router.get('/edit/:id', getListing, (req, res) => { // ROUTE TO GRAB YOUR LISTING THAT YOU ARE SELLING
+  res.render('./testedit', {
+    oneListing: res.oneListing,
+  });
+});
+
+router.put('/editfinished/:id', editListing, (req, res) => { // ROUTE TO EDIT YOUR LISTING THAT YOU ARE SELLING
+  res.redirect('/test2');
+});
+
+router.delete('/delete/:id', deleteListing, (req, res) => { // ROUTE TO DELETE YOUR LISTING THAT YOU ARE SELLING
+  res.redirect('/test2');
+});
 // CREATE ROUTE TO REDIRECT AFTER NEW PIN IS CREATED / USER CAN CLICK LINK TO GO BACK TO HOME
 
 // ROUTE TO EDIT THE PIN/DESCRIPTION YOU HAVE CREATED (WHERE FROM?)
