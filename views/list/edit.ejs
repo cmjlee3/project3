@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome</title>
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Laila|Nixie+One" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+  <link rel="stylesheet" href="../css/currentLocation.css">
+</head>
+<body>
+
+  <div id="update">
+    <form class="edit" action="/list/editfinished/<%= oneListing._id %>?_method=PUT" method="POST">
+      <input type='text' name='oneListing[location]' value="<%= oneListing.location %>" placeholder='Location'><br>
+      <input type='text' name='oneListing[description]' value="<%= oneListing.description %>" placeholder='Description'><br>
+      <input type="submit" value="Update">
+    </form>
+  </div>
+
+</body>
+</html>

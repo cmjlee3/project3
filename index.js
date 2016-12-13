@@ -1,68 +1,61 @@
-//install dependencies
-// require('dotenv').config();
-const express               = require('express');
-const logger                = require('morgan');
-const path                  = require('path');
-const bodyParser            = require('body-parser');
-const methodOverride        = require('method-override');
-const session               = require('express-session');
-const cookieParser          = require('cookie-parser');
-const SECRET                = 'tacos3000';
+/* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
+// const dotEnv          = require('dotenv').config({ silent: true });
+const express         = require('express');
+const morgan          = require('morgan');
+const path            = require('path');
+const bodyParser      = require('body-parser');
+const session         = require('express-session');
+const cookieParser    = require('cookie-parser');
+const methodOverride  = require('method-override');
 
+const indexRouter     = require('./routes/index');
+const authRouter      = require('./routes/auth');
+const usersRouter     = require('./routes/users');
+const decideRouter    = require('./routes/decide');
+const mapRouter       = require('./routes/map');
+const listRouter       = require('./routes/list');
+const saveRouter       = require('./routes/save');
 
-// connection to model                   = require('./models/model');
-const {}          = require('./models/model')
-// const Uber                  = require('node-uber');
-// const uberMethod            = require('../models/uber')
+const app             = express();
+const SECRET          = 'alextong';
 
-//initializing express server
-const app                   = express();
-const port                  = process.env[2] || process.env.PORT || 3000;
-
-//setting view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', 'views');
 
-//for css
-app.use(methodOverride('_method'));
+// log requests to STDOUT
+app.use(morgan('dev'));
 
-//for css
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//for css
+// parse application/json
 app.use(bodyParser.json());
 
-//reads cookie from brower
+// middleware for method override
+app.use(methodOverride('_method'));
+
+// This is how we read the cookies sent over from the browser
 app.use(cookieParser());
 
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: SECRET
+  secret: SECRET,
 }));
 
-app.use(logger('dev'));
+// Set static file root folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-//link to routes
-const homeRouter=require('./routes/home');
-const authRouter = require('./routes/auth');
-const userRouter= require('./routes/users');
-const mapRouter = require('./routes/map');
-const bucketListRouter = require('./routes/bucket_list');
-
-//call to routes
-app.use('/', homeRouter);
+app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/users', userRouter);
+app.use('/users', usersRouter);
+app.use('/decide', decideRouter);
 app.use('/map', mapRouter);
-app.use('/bucketlist', bucketListRouter);
+app.use('/list', listRouter);
+app.use('/save', saveRouter);
+
+// Listen on port for connections
+// process.env.PORT is needed for when we deploy to Heroku
+const port = process.env.PORT || 3000;
 
 app.listen(port, ()=> console.log('Server is listening on port ', port));
 
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-// app.get('/api/login', function(request, response) {
-//   var url = uber.getAuthorizeUrl(['history','profile', 'request', 'places']);
-//   response.redirect(url);
-// });

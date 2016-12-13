@@ -1,0 +1,53 @@
+body{
+  /*background-image: url('');*/
+  background-color: #222;
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#account {
+  padding: 25px 30px;
+}
+
+#bodycontainer {
+  display: block;
+}
+
+#title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#username {
+   margin-top: 5%;
+   font-weight: bold;
+   font-size: 30px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+a {
+  /*text-decoration: none;*/
+  color: white;
+}
+
+p {
+  padding-bottom: 2px;
+}

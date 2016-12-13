@@ -1,0 +1,47 @@
+body {
+  background-image: url('/pics/plane.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Nixie One', cursive;
+  font-family: 'Fredericka the Great', cursive;
+  background-color: #FAFAFA;
+  text-align: center;
+}
+
+#signup {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 85px;
+}
+
+h1 {
+  padding-top: 50px;
+  font-size: 50px;
+  color: #FAFAFA;
+}
+
+input {
+  font-size: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+#submit {
+  border-radius: 10px;
+  background-color: #222;
+  color: #FAFAFA;
+  width: 17vw;
+}
+
+#submit:hover {
+  background-color: #FAFAFA;
+  color: #222;
+}
+
+h2 {
+  font-size: 7vw;
+  color: white;
+  margin-top: 5vh;
+
+}

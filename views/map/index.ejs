@@ -1,45 +1,32 @@
+<!-- This entire html template is used from the Google Maps API documentation located at https://developers.google.com/. -->
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-    <link rel="stylesheet" href="../../style.css">
-</head>
-<body>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/map.css">
+  </head>
+  <body>
 
-  map.ejs!
-
-  <!-- Fix Bucket list button -->
-  <form method="get" action="/bucketlist">
-      <button type="submit">Bucket List!</button>
-  </form>
-
-    <div class='parallax' id='allListingsContainer'>
-  <% for (let i=0; i < mapMarkers.length; i++) { %>
-    <div id='singleListing'>
-    <h1><%= mapMarkers[i].title %></h1>
-    <p><%= mapMarkers[i].quantity %></p>
-    <p><%= mapMarkers[i].description %></p>
-    <p><%= mapMarkers[i].price %></p>
-    <p>Seller: <%= mapMarkers[i].username %></p>
-    <p>Number of BarGainers following this item: <%= mapMarkers[i].favoriteUsers.length %></p>
-    <p>For contact information,</p>
-    <!-- <a href="/map/<%= mapMarkers[i]._id %>">click here to see detailed posting</a> -->
-
-    <a href="/map/edit/<%= mapMarkers %>">Edit Listing</a>
-        <form action="/map/delete/<%= mapMarkers %>?_method=DELETE" method="post">
-          <input type="submit" value="Delete">
-        </form>
-
-    </div>
-    <% } %>
+  <div class='locations' id='allLocationsContainer'>
+  <h1>Places of interest:</h1>
+    <% for (let i=0; i < mapMarkers.length; i++) { %>
+      <div id='singleListing'>
+      <h2><%= mapMarkers[i].location %></h2>
+      <p><%= mapMarkers[i].description %></p>
+      <p><%= mapMarkers[i].price %></p>
+      <p>User: <%= mapMarkers[i].username %></p>
+      <p>Number of users following this travel log: <%= mapMarkers[i].favoriteUsers.length %></p>
+      <p>For contact information,</p>
+      <a href="/map/<%= mapMarkers[i]._id %>">click here to see more information</a>
+      </div>
+      <% } %>
   </div>
 
-  <div id='mapContainer'>
-    <div id="map"></div>
+<!-- <div id='mapContainer'>
+  <div id="map"></div>
   </div>
-
+ -->
 <link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDu1zOGCMJEMn2Ja45WRuyWFN_Rv7ZSh3c"></script>
 
@@ -171,21 +158,22 @@
     /*padding: 0 0.5em 0.5em 0.5em;*/
     }
     html, body, #map_canvas {
-            margin: 0;
-            width: 100%;
+            margin: 0 auto;
+            width: 95%;
             height: 100%;
     }
 </style>
 
 <body onLoad="initialize()">
+<h1>Places you've been:</h1><br>
   <div id="controls">
-
   <input id="address" type="textbox" name="listing[city]" placeholder="City">
   <input id="description" type="textbox" name="listing[description]" placeholder="Description (optional)">
   <input type="button" value="Submit" onClick="codeAddress( )">
 
   </div>
   </div>
+  <br>
 
   1. I want the submit to take the location and description and store it into mongo so that next time the same user logs in/page is refreshed the markers stay put.
   2. Take those saved pieces of info and have them load in the info window
@@ -200,6 +188,5 @@ create save in infobox to then store into mongo
 
 <div id="map_canvas"></div>
 
-
-</body>
+  </body>
 </html>

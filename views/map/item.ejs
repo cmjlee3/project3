@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+  <link rel="stylesheet" href="css/decide.css">
+
+</head>
+<body>
+
+  <div id="moreInfo">
+      <p><%= listing.username %></p>
+      <p><%= listing.location %></p>
+      <p><%= listing.description %></p>
+      <p><%= listing.tel %></p>
+      <p><%= listing.email %></p>
+
+      <h1>Users that are also following this item in the area</h1>
+      <p><%= listing.favoriteUsers.length %> <p>
+      <% listing.favoriteUsers.forEach((user) => { %>
+      <div id='userCon'>
+      <p><%= user %></p>
+      </div>
+      <% }) %>
+
+      <p>Wanna see who else is interested in this location?</p>
+
+    <form action="/save" method="POST">
+      <input type="hidden" name="listing[_id]" value="<%= listing._id %>">
+      <input type="hidden" name="listing[sellerId]" value="<%= listing.sellerId %>">
+      <input type="hidden" name="listing[username]" value="<%= listing.username %>">
+      <input type="hidden" name="listing[location]" value="<%= listing.location %>">
+      <input type="hidden" name="listing[price]" value="<%= listing.price %>">
+      <input type="hidden" name="listing[description]" value="<%= listing.description %>">
+      <input type="hidden" name="listing[tel]" value="<%= listing.tel %>">
+      <input type="hidden" name="listing[email]" value="<%= listing.email %>">
+      <input type='hidden' name='listing[accuracy]' value='<%= listing.accuracy %>'><br>
+
+      <input type="submit" value="Indicate Interest">
+    </form>
+  </div>
+
+</body>
+</html>

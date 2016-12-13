@@ -1,0 +1,51 @@
+body{
+  background-image: url('/pics/plane.jpg');
+  background-size: cover;
+  background-color: #FAFAFA;
+  background-repeat: no-repeat;
+  font-family: 'Nixie One', cursive;
+  font-family: 'Fredericka the Great', cursive;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  margin-left: 20%;
+  margin-top: 10vh;
+}
+
+a {
+  padding-bottom: 30px;
+}
+
+#bodycontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.button {
+  display: inline-block;
+  margin: 15%;
+  background-color: #222;
+  color: #FAFAFA;
+  font-size: 2.5vw;
+  width: 25vw;
+  height: 80px;
+  padding-top: 30px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-right: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  float: left;
+}
+
+.button:hover {
+  background-color: #FAFAFA;
+  color: #222;
+}
+

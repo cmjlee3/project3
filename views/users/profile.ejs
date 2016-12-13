@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/profile.css">
+  </head>
+<body>
+
+    <h1 id="username">Hello <%= user.username %>!</h1>
+
+    <form action="/auth?_method=DELETE" method="post">
+      <input type="submit" value="Logout">
+    </form>
+
+      <h2>Your places:</h2>
+    <% myListings.forEach((listing) => { %>
+      <div class="listingContainer">
+        <p><%= listing.location %></p>
+        <p><%= listing.description %></p>
+        <p><%= listing.price %></p>
+        <p><%= listing.tel %></p>
+        <p><%= listing.email %></p>
+        <a href="/list/edit/<%= listing._id %>">Edit Listing</a>
+        <form action="/list/delete/<%= listing._id %>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+        </form>
+
+      </div>
+    <% }) %>
+
+    <h1 id='title'>Places you have indicated interest:<h1>
+
+    <% myFavorites.forEach((listing) => { %>
+      <div class="listingContainer">
+        <p><%= listing %></p>
+        <a href="/map/<%= listing %>" title="">A link to your listing</a>
+
+      <form action="/save/delete/<%= listing %>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+      </form>
+
+      </div>
+    <% }) %>
+
+
+  </body>
+</html>

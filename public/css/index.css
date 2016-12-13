@@ -1,0 +1,59 @@
+body {
+  background-color: #222;
+  font-family: 'Nixie One', cursive;
+  font-family: 'Fredericka the Great', cursive;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('/pics/plane.jpg');
+  background-size: cover;
+}
+
+#pageone {
+  margin: 0 auto;
+  margin-top: 18vh;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  opacity: .9;
+  color: #FAFAFA;
+  text-align: center;
+}
+
+h1 {
+  font-size: 16vw;
+  text-shadow: 0 5px 5px #222;
+  margin-top: 25vh;
+}
+
+h2 {
+  font-size: 2.5vw;
+  text-shadow: 0 5px 5px #111;
+  color: #FAFAFA;
+  margin-top: 5vh;
+}
+
+a {
+  margin: 0 2vw;
+  box-sizing: border-box;
+  margin-top: 8vh;
+  padding-top: 4.4vh;
+  padding-bottom: 2vh;
+  display: inline-block;
+  background-color: black;
+  opacity: .8;
+  border-radius: 10px;
+  width: 20vw;
+  height: 12vh;
+  text-decoration: none;
+  font-size: 1.8vw;
+  color: white;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  font-weight: bold;
+}
+
+a:hover {
+    background-color: white;
+    color: black;
+}
+

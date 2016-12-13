@@ -1,0 +1,94 @@
+body{
+  background-image: url('/pics/forrest.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Nixie One', cursive;
+  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Laila', serif;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4vw;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+a {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+p {
+  text-align: left;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: right;
+}
+
+#bodyContainer {
+  /*width: 30vw;*/
+  height: 100%;
+  /*background-color: white;*/
+  overflow: hidden;
+  margin-top: 30%;
+
+}
+
+input {
+  font-family: 'Nixie One', cursive;
+  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Laila', serif;
+  font-size: 3.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+#submit {
+  border-radius: 10px;
+  background-color: #222;
+  color: #FAFAFA;
+  width: 15vw;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#submit:hover {
+  background-color: #FAFAFA;
+  color: #222;
+}
+
+#update {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}

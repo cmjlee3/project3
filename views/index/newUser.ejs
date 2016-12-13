@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign up</title>
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Nixie+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+
+  </head>
+  <body>
+    <div id='signup'>
+     <h2>Signup</h2><br>
+    <form class="singupstuff" action="/users" method="post">
+        <input type="text" name="user[fullname]" value="" placeholder="Full Name"><br>
+        <input type="text" name="user[username]" value="" placeholder="Username"><br>
+        <input type="password" name="user[password]" value="" placeholder="Password"><br>
+        <input type="email" name="user[email]" value="" placeholder="Email"><br>
+        <input id='submit' type="submit" value="Sign up">
+    </form>
+    </div>
+  </body>
+</html>
