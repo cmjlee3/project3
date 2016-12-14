@@ -8,7 +8,7 @@ function getLocations(req, res, next) { // finds ALL listings on the global map 
       // userId: { $eq: req.session.userId}
       .toArray((toArrErr, data) => {
         if (toArrErr) return next(toArrErr);
-        console.log(data);
+        // console.log(data);
         res.allListings = data;
         db.close();
         next();
@@ -153,4 +153,20 @@ function getAllMarkers(req, res, next) {
   return false;
 }
 
-module.exports = { getLocations, saveLocation, deleteListing, getMyListings, editListing, getListing, saveMapLocation, getAllMarkers };
+function deleteMarker(req, res, next) {
+  getDB().then((db) => {
+    db.collection('markers')
+      .findAndRemove({ _id: ObjectID(req.params.id) }, (removeErr, result) => {
+        if (removeErr) return next(removeErr);
+        res.deletedMarker = result;
+        db.close();
+        next();
+        return false;
+      });
+    return false;
+  });
+  return false;
+}
+
+
+module.exports = { getLocations, saveLocation, deleteListing, getMyListings, editListing, getListing, saveMapLocation, getAllMarkers, deleteMarker };

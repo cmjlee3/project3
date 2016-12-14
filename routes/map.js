@@ -1,7 +1,23 @@
 const router = require('express').Router();
 const { authenticate } = require('../lib/auth');
-const { getLocations, getListing, saveMapLocation, getAllMarkers } = require('../models/locations');
+const { getLocations, getListing, saveMapLocation, getAllMarkers, deleteMarker } = require('../models/locations');
 const { searchListings } = require('../models/search');
+
+// router.get('/allmarkers', getAllMarkers, (req,res) => { // ADD getAllMarkers after creating it in model/locations
+//   console.log('HERE');
+//   res.render('map/index', {
+//     allMapMarkers: res.allMarkers || [],
+//   })
+//   // res.json({status: 'ok'})
+// });
+
+router.get('/', authenticate, getLocations, getAllMarkers, (req,res) => { // ADD getAllMarkers after creating it in model/locations
+  // console.log('HERE');
+  res.render('map/index', {
+   mapMarkers: res.allListings || [],
+   allMapMarkers: res.allMarkers || [],
+  })
+});
 
 router.post('/markers', saveMapLocation, (req,res) => {
    // console.log('Made it here');
@@ -19,19 +35,13 @@ router.get('/:id', searchListings, getListing, (req, res) => { // ROUTE TO SEE S
   });
 });
 
-router.get('/', authenticate, getLocations, (req,res) => { // ADD getAllMarkers after creating it in model/locations
-  // console.log('HERE');
-  res.render('map/index', {
-   mapMarkers: res.allListings,
-  })
+router.delete('/delete/:id', deleteMarker,(req, res) => {
+  console.log('is delete hitting?'); //NOT CONSOLE LOGGING
+  res.redirect('map/index');
 });
 
-router.get('/allmarkers', authenticate, getAllMarkers, (req,res) => { // ADD getAllMarkers after creating it in model/locations
-  // console.log('HERE');
-  res.render('map/index', {
-    allMapMarkers: res.allMarkers || [],
-  })
-});
+
+
 
 module.exports = router;
 

@@ -20,11 +20,10 @@ const app             = express();
 const SECRET          = 'cecillee';
 
 app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 // log requests to STDOUT
 app.use(morgan('dev'));
-app.set('views', 'views');
-
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -57,7 +56,8 @@ app.use('/save', saveRouter);
 
 // Listen on port for connections
 // process.env.PORT is needed for when we deploy to Heroku
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = process.env[2] || process.env.PORT || 3000;
 
 app.listen(port, ()=> console.log('Server is listening on port ', port));
 

@@ -27,7 +27,7 @@
   <div id="map"></div>
   </div>
  -->
-<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css"/>
+<link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDu1zOGCMJEMn2Ja45WRuyWFN_Rv7ZSh3c"></script>
 
   <script type="text/javascript">
@@ -75,12 +75,12 @@
         let results;
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         // getAllMyMarkers();
-            fetch('/map/allmarkers', {
+            fetch('/map', {
               method: 'GET',
-              credentials: 'include',
-              headers: {
-                'Content-Type' : 'application/json'
-              },
+              // credentials: 'include',
+              // headers: {
+              //   'Content-Type' : 'application/json'
+              // },
               // body: JSON.stringify(place)
             })
             .then(r => r.json())
@@ -126,7 +126,10 @@
             });
 
           var infowindow = new google.maps.InfoWindow({
-              content: '<form action = "/map/submit" method="post"><input type="text" name="location[place]" value="city"><button>save</button></form>',
+
+              content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+              //GIVING ERROR: Cannot GET /map/delete/undefined?
+
               maxWidth: 60
             });
 
