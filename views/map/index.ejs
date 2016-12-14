@@ -91,7 +91,7 @@
                 });
                 // console.log('marker._id');
                  var infowindow = new google.maps.InfoWindow({
-                  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+                  // content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
                     maxWidth: 60
                 });
 
@@ -141,7 +141,7 @@
           console.log('inside codeAddress', marker._id);
           var infowindow = new google.maps.InfoWindow({
 
-              content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+              // content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
               //GIVING ERROR: Cannot GET /map/delete/undefined?
 
               maxWidth: 60

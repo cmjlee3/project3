@@ -35,7 +35,9 @@ router.get('/:id', searchListings, getListing, (req, res) => { // ROUTE TO SEE S
   });
 });
 
-router.delete('/delete/:id', deleteMarker,(req, res) => {res.json({message: 'we did it!'});
+router.delete('/delete/:id', deleteMarker,(req, res) => {
+  console.log('is delete hitting?'); //NOT CONSOLE LOGGING
+  res.redirect('map/index');
 
 });
 

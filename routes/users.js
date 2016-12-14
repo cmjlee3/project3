@@ -21,7 +21,7 @@ usersRouter.post('/', createUser, (req, res) => { // ROUTE TO CREATE A NEW USER 
  * It redirects to /login when attempted to be reached by a non logged in user
  * It is "protected" by the authenticate middleware from the auth library
  */
-usersRouter.get('/profile', authenticate, getMyListings, getMyLocations, (req, res) => { // ROUTE TO GRAB PROFILE AND FILL OUT WITH USER SELLING LISTINGS AND FAVORITE BUY LISTINGS
+usersRouter.get('/profile', authenticate, getMyListings, getMyLocations, (req, res) => { // ROUTE TO GRAB PROFILE AND FILL OUT WITH USER LOCATIONS A LISTINGS
   res.render('users/profile', {
     user: res.user,
     myListings: res.myListings || [],

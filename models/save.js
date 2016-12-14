@@ -1,7 +1,7 @@
 const { ObjectID } = require('mongodb');
 const { getDB } = require('../lib/dbConnect.js');
 
-function saveLocToUser(req, res, next) { // saves a Favorite
+function saveLocToUser(req, res, next) { // saves a LOC TO USER
 
   getDB().then((db) => {
     db.collection('users')
@@ -17,7 +17,7 @@ function saveLocToUser(req, res, next) { // saves a Favorite
   return false;
 }
 
-function saveUserToLoc(req, res, next) { // saves a Favorite
+function saveUserToLoc(req, res, next) { // saves a USER TO LOC
   getDB().then((db) => {
     db.collection('listings')
       .update({ _id: ObjectID(req.body.listing._id) }, { $push: { favoriteUsers: res.user.username } }, (insertErr, result) => {
@@ -47,7 +47,7 @@ function deleteLocation(req, res, next) {
   return false;
 }
 
-function getMyLocations(req, res, next) { // find listings USER has favorited.
+function getMyLocations(req, res, next) { // find listings USER has indicated interest in.
   getDB().then((db) => {
     db.collection('users')
       .find({ _id: ObjectID(req.session.userId) })
