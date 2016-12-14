@@ -154,6 +154,7 @@ function getAllMarkers(req, res, next) {
 }
 
 function deleteMarker(req, res, next) {
+  console.log('in delete marker', req.body)
   getDB().then((db) => {
     db.collection('markers')
       .findAndRemove({ _id: ObjectID(req.params.id) }, (removeErr, result) => {

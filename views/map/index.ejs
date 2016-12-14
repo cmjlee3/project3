@@ -84,15 +84,15 @@
               for( i = 0; i < allMapMarkers.length; i++ ) {
                 var position = new google.maps.LatLng(allMapMarkers[i].place.lat, allMapMarkers[i].place.lng);
                 // bounds.extend(position);
-                 var infowindow = new google.maps.InfoWindow({
-                  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
-                    maxWidth: 60
-                });
-
                 marker = new google.maps.Marker({
                   position: position,
                   map: map,
                   title: allMapMarkers[i].place.name
+                });
+                // console.log('marker._id');
+                 var infowindow = new google.maps.InfoWindow({
+                  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+                    maxWidth: 60
                 });
 
                 google.maps.event.addListener(marker, "click", function() {
@@ -138,7 +138,7 @@
               zIndex: sites[3],
               html: sites[4]
             });
-
+          console.log('inside codeAddress', marker._id);
           var infowindow = new google.maps.InfoWindow({
 
               content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
