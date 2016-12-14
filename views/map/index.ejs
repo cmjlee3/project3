@@ -1,4 +1,4 @@
-<!-- This entire html template is used from the Google Maps API documentation located at https://developers.google.com/. -->
+<!-- This entire script template is used from the Google Maps API documentation located at https://developers.google.com/. -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,7 +23,6 @@
       <% } %>
   </div>
 
-
 <!-- <div id='mapContainer'>
   <div id="map"></div>
   </div>
@@ -36,15 +35,33 @@
     var geocoder;
     var map;
 
-    function getAllMyMarkers() {
-      fetch('/map/allmarkers')
-      .then(r => r.json())
-      .then((data) => {
-         // results = data
-         // console.log('=====',data)
-      })
-       .catch(err => console.log(err));
-    }
+    // function getAllMyMarkers() {
+    //   fetch('/map/allmarkers', {
+    //     method: 'GET',
+    //     credentials: 'include',
+    //     headers: {
+    //       'Content-Type' : 'application/json'
+    //     },
+    //     body: JSON.stringify(place)
+    //   })
+    //   .then(r => r.json())
+    //   .then((data) => {
+    //      // results = data
+    //    console.log('=====',data)
+    //       for( i = 0; i < allMapMarkers.length; i++ ) {
+    //         var position = new google.maps.LatLng(allMapMarkers.lat, allMapMarkers.long);
+    //         bounds.extend(position);
+    //         marker = new google.maps.Marker({
+    //           position: position,
+    //           map: map,
+    //           title: markers[i].title
+    //       });
+    //           gmarkers.push(marker);
+    //       }
+
+    //   })
+    //    .catch(err => console.log(err));
+    // }
     // create for loop or for each in .then with allMapMarkers
 
     function initialize() {
@@ -57,66 +74,38 @@
         }
         let results;
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        // getAllMyMarkers();
+            fetch('/map/allmarkers', {
+              method: 'GET',
+              credentials: 'include',
+              headers: {
+                'Content-Type' : 'application/json'
+              },
+              // body: JSON.stringify(place)
+            })
+            .then(r => r.json())
+            .then((data) => {
+               // results = data
+               console.log('FETCHING ALL MARKERS');
 
-        getAllMyMarkers();
-        // const allMyMarkers = getAllMyMarkers();
-        // console.log(allMyMarkers)
-        // fetch('/map/geolocode')
-        // .then(r => r.json())
-        // .then((data) => {
-        //   results = data
-        //   }
-        // )
-        // .catch(error => console.log(error))
-        // if(results) {
-        //   results.forEach((result) => {
-        //     codeAllAddresses(result);
-        //   })
-        // }
+                  for( i = 0; i < allMapMarkers.length; i++ ) {
+                    var position = new google.maps.LatLng(allMapMarkers.lat, allMapMarkers.lng);
+                    bounds.extend(position);
+                    marker = new google.maps.Marker({
+                      position: position,
+                      map: map,
+                      title: markers[i].title
+                  });
+                      gmarkers.push(marker);
+                  }
 
+            })
+             .catch(err => console.log(err));
         }
 
 
-    // function codeAllAddresses(address) {
-    //   var contentString = "Google Maps";
-    //     var sites = [
-    //     ["this is a title", 52, 10, 10, "<div>This is the first site</div>"]
-    //     ];
-
-    //     geocoder.geocode( { 'address': address}, function(results, status) {
-    //     if (status == google.maps.GeocoderStatus.OK) {
-    //     map.setCenter(results[0].geometry.location);
-    //     var marker = new google.maps.Marker({
-    //         map: map,
-    //         position: results[0].geometry.location,
-    //         // title: sites[0],
-    //         // zIndex: sites[3],
-    //         // html: sites[4]
-    //       });
-    //     console.log(map)
-    //     var infowindow = new google.maps.InfoWindow({
-    //         content: '<div>werk plz</div>',
-    //         maxWidth: 60
-    //       });
-
-    //    google.maps.event.addListener(marker, "click", function() {
-    //       console.log('clicked!! yay')
-    //       // infowindow.setContent(this.html);
-    //       infowindow.open(map, this);
-    //     });
-
-    //    map.setCenter(marker.position);
-    //    marker.setMap(map);
-
-    //     } else {
-    //       alert("Geocode was not successful for the following reason: " + status);
-    //         }
-    //    });
-    // }
-
-
     function codeAddress(event) {
-        console.log('Did it');
+        // console.log('Did it');
         var address = document.getElementById("address").value;
         // console.log(address);
         var contentString = "Google Maps";
@@ -147,16 +136,6 @@
 
           map.setCenter(marker.position);
           marker.setMap(map);
-          // fetch('/map/geolocode', {
-          //  method: 'POST',
-          //  headers: "Content"
-          //  body: {
-          //    marker: address
-          //  }
-          // }).then(r = r.json())
-          // .then(data => console.log(data))
-          // .catch(error => console.log(error))
-          // console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 
           const place = {
             name: address,
@@ -164,7 +143,6 @@
             lng: results[0].geometry.location.lng()
           }
           console.log(place);
-
 
           // do a POST fetch call AND SEND THE "place" as the body
           fetch('/map/markers', {
@@ -176,28 +154,12 @@
             body: JSON.stringify(place)
           })
           .catch(err => console.log(err));
-           // .then(r => r.json())
-           // .then((data) => {
-           //    console.log('Request success: ', data);
-           //    res.place = data;
-           //    next();
-           //  })
-           //  .catch((error) => {
-           //    console.log('Request failure: ', error);
-           //    res.err = err;
-           //    next();
-           //  })
-           // }
-
-
-
 
           } else {
             alert("Geocode was not successful for the following reason: " + status);
           }
        });
      }
-
 
 
 </script>

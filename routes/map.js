@@ -4,7 +4,7 @@ const { getLocations, getListing, saveMapLocation, getAllMarkers } = require('..
 const { searchListings } = require('../models/search');
 
 router.post('/markers', saveMapLocation, (req,res) => {
-   console.log('Made it here');
+   // console.log('Made it here');
    res.redirect('/map');
 });
 
@@ -20,10 +20,16 @@ router.get('/:id', searchListings, getListing, (req, res) => { // ROUTE TO SEE S
 });
 
 router.get('/', authenticate, getLocations, (req,res) => { // ADD getAllMarkers after creating it in model/locations
-  console.log('HERE');
+  // console.log('HERE');
   res.render('map/index', {
-    mapMarkers: res.allListings,
+   mapMarkers: res.allListings,
+  })
+});
 
+router.get('/allmarkers', authenticate, getAllMarkers, (req,res) => { // ADD getAllMarkers after creating it in model/locations
+  // console.log('HERE');
+  res.render('map/index', {
+    allMapMarkers: res.allMarkers || [],
   })
 });
 

@@ -17,7 +17,7 @@ const listRouter       = require('./routes/list');
 const saveRouter       = require('./routes/save');
 
 const app             = express();
-const SECRET          = 'alextong';
+const SECRET          = 'cecillee';
 
 app.set('view engine', 'ejs');
 

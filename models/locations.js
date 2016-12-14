@@ -113,8 +113,6 @@ function deleteListing(req, res, next) {
   return false;
 }
 
-// TEST
-
 function saveMapLocation(req, res, next) { // submits ONE listing to the global map from user
   console.log('MADE IT TO MODEL');
 
@@ -136,7 +134,8 @@ function saveMapLocation(req, res, next) { // submits ONE listing to the global 
   return false;
 }
 
-function getAllMarkers(req, res, next) { // finds ALL listings on the global map regardless of user
+function getAllMarkers(req, res, next) {
+  console.log('is it hitting?????')// finds ALL listings on the global map regardless of user
   getDB().then((db) => {
     db.collection('markers')
       .find({})
