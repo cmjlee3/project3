@@ -90,15 +90,15 @@
                   title: allMapMarkers[i].place.name
                 });
                 // console.log('marker._id');
-                 var infowindow = new google.maps.InfoWindow({
-                  // content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
-                    maxWidth: 60
-                });
+              //    var infowindow = new google.maps.InfoWindow({
+              //     content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+              //       maxWidth: 60
+              //   });
 
-                google.maps.event.addListener(marker, "click", function() {
-                console.log('clicked!! NOICE')   // infowindow.setContent(this.html);
-                infowindow.open(map, this);
-              });
+              //   google.maps.event.addListener(marker, "click", function() {
+              //   console.log('clicked!! NOICE')   // infowindow.setContent(this.html);
+              //   infowindow.open(map, this);
+              // });
 
                 gmarkers.push(marker);
               }
