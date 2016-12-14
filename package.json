@@ -4,7 +4,8 @@
   "description": "Bucket list + tracker of all the places one has traveled to.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "engines": {
     "node": "6.6.0"
