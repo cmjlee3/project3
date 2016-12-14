@@ -23,6 +23,8 @@ app.set('view engine', 'ejs');
 
 // log requests to STDOUT
 app.use(morgan('dev'));
+app.set('views', 'views');
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
