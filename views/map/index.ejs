@@ -34,6 +34,7 @@
 
     var geocoder;
     var map;
+    var gmarkers = [];
 
     // function getAllMyMarkers() {
     //   fetch('/map/allmarkers', {
@@ -74,33 +75,46 @@
         }
         let results;
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        // getAllMyMarkers();
-            fetch('/map', {
-              method: 'GET',
-              // credentials: 'include',
-              // headers: {
-              //   'Content-Type' : 'application/json'
-              // },
-              // body: JSON.stringify(place)
-            })
-            .then(r => r.json())
-            .then((data) => {
-               // results = data
-               console.log('FETCHING ALL MARKERS');
 
-                  for( i = 0; i < allMapMarkers.length; i++ ) {
-                    var position = new google.maps.LatLng(allMapMarkers.lat, allMapMarkers.lng);
-                    bounds.extend(position);
-                    marker = new google.maps.Marker({
-                      position: position,
-                      map: map,
-                      title: markers[i].title
-                  });
-                      gmarkers.push(marker);
-                  }
 
-            })
-             .catch(err => console.log(err));
+        const allMapMarkers = <%-  JSON.stringify(allMapMarkers)  %>;
+
+        console.log(allMapMarkers);
+
+              for( i = 0; i < allMapMarkers.length; i++ ) {
+                var position = new google.maps.LatLng(allMapMarkers[i].place.lat, allMapMarkers[i].place.lng);
+                // bounds.extend(position);
+                 var infowindow = new google.maps.InfoWindow({
+                  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+                    maxWidth: 60
+                });
+
+                marker = new google.maps.Marker({
+                  position: position,
+                  map: map,
+                  title: allMapMarkers[i].place.name
+                });
+
+                google.maps.event.addListener(marker, "click", function() {
+                console.log('clicked!! NOICE')   // infowindow.setContent(this.html);
+                infowindow.open(map, this);
+              });
+
+                gmarkers.push(marker);
+              }
+
+         // NEED TO CREATE INFOBOXES IN LOOP:
+
+         // var infowindow = new google.maps.InfoWindow({
+
+         //  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
+         //      //GIVING ERROR: Cannot GET /map/delete/undefined?
+         //    maxWidth: 60
+         //  });
+
+         //  google.maps.event.addListener(marker, "click", function() {
+         //  console.log('clicked!! yay')   // infowindow.setContent(this.html);
+         //  infowindow.open(map, this); });
         }
 
 
