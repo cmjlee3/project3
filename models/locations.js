@@ -8,6 +8,7 @@ function getLocations(req, res, next) { // finds ALL listings on the global map 
       // userId: { $eq: req.session.userId}
       .toArray((toArrErr, data) => {
         if (toArrErr) return next(toArrErr);
+        console.log(data);
         res.allListings = data;
         db.close();
         next();
@@ -21,7 +22,6 @@ function getLocations(req, res, next) { // finds ALL listings on the global map 
 function saveLocation(req, res, next) { // submits ONE listing to the global map from user
   const ID = req.session.userId;
   const user = res.user.username;
-
   const c = req.body.listing.accuracy;
   const e = res.user.tel;
   const f = res.user.email;
@@ -116,25 +116,17 @@ function deleteListing(req, res, next) {
 // TEST
 
 function saveMapLocation(req, res, next) { // submits ONE listing to the global map from user
+  console.log('MADE IT TO MODEL');
+
   const ID = req.session.userId;
-  const user = res.user.username;
-  const a = req.body.listing.latitude;
-  const b = req.body.listing.longitude;
-  const c = req.body.listing.accuracy;
-  const d = req.body.listing.quantity;
-  const e = res.user.tel;
-  const f = res.user.email;
-  const g = req.body.listing.description;
-  const i = req.body.listing.price;
-  const j = req.body.listing.category;
-  const k = req.body.listing.title;
-  const l = [];
+  const place = req.body;
+
 
   getDB().then((db) => {
-    db.collection('listings')
-      .insert({ sellerId: ID, username: user, latitude: a, longitude: b, accuracy: c, quantity: d, tel: e, email: f, description: g, price: i, category: j, title: k, favoriteUsers: l }, (insertErr, result) => {
+    db.collection('markers')
+      .insert({ sellerId: ID, place: place }, (insertErr, result) => {
         if (insertErr) return next(insertErr);
-        res.saved = result;
+        res.locationsaved = result;
         db.close();
         next();
         return false;
@@ -144,4 +136,22 @@ function saveMapLocation(req, res, next) { // submits ONE listing to the global 
   return false;
 }
 
-module.exports = { getLocations, saveLocation, deleteListing, getMyListings, editListing, getListing, saveMapLocation };
+function getAllMarkers(req, res, next) { // finds ALL listings on the global map regardless of user
+  getDB().then((db) => {
+    db.collection('markers')
+      .find({})
+      // userId: { $eq: req.session.userId}
+      .toArray((toArrErr, data) => {
+        if (toArrErr) return next(toArrErr);
+        console.log('**********', data);
+        res.allMarkers = data;
+        db.close();
+        next();
+        return false;
+      });
+    return false;
+  });
+  return false;
+}
+
+module.exports = { getLocations, saveLocation, deleteListing, getMyListings, editListing, getListing, saveMapLocation, getAllMarkers };
