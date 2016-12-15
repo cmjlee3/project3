@@ -30,8 +30,27 @@ Places an individual has indicated interest in will be kept track of along with 
 
 Wireframes:
 
+![screen shot 2016-12-14 at 10 21 14 pm](https://cloud.githubusercontent.com/assets/20479988/21210798/23163ac2-c24c-11e6-9ed6-7ab25d882165.png)
+
+![screen shot 2016-12-14 at 10 24 24 pm](https://cloud.githubusercontent.com/assets/20479988/21210795/1c00222a-c24c-11e6-8467-bc3d2ccdc237.png)
+
+![screen shot 2016-12-14 at 10 26 38 pm](https://cloud.githubusercontent.com/assets/20479988/21210826/67b35070-c24c-11e6-9aa8-28e7f50b81fb.png)
+
+![screen shot 2016-12-14 at 10 28 18 pm](https://cloud.githubusercontent.com/assets/20479988/21210857/a30bbf4a-c24c-11e6-9343-0e7e8a3be743.png)
+
+Create Bucketlist listing:
+![screen shot 2016-12-14 at 10 30 10 pm](https://cloud.githubusercontent.com/assets/20479988/21210905/e577b2b2-c24c-11e6-9ea1-50783e99622a.png)
+
+Places:
+![screen shot 2016-12-14 at 10 32 57 pm](https://cloud.githubusercontent.com/assets/20479988/21211030/ef99caae-c24d-11e6-92c7-5c2c890bbe5a.png)
+
+![screen shot 2016-12-14 at 10 48 25 pm](https://cloud.githubusercontent.com/assets/20479988/21211193/73af5d9e-c24f-11e6-8da5-ddff232bec38.png)
+
+
 Key Challenges:
 
--Google Maps: ability for a user to make markers in the front end + have them stored into mongo 
+-Google Maps: ability for a user to make markers in the front end + have them stored into mongo, have stored markers all render according to userid.
+
+
 
 
