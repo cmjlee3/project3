@@ -11,20 +11,20 @@ body {
 #signup {
   width: 70%;
   margin: 0 auto;
-  margin-top: 85px;
+  margin-top: 10%;
+}
+
+.fillout {
+  font-size: 15px;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 15px;
 }
 
 h1 {
   padding-top: 50px;
   font-size: 50px;
   color: #FAFAFA;
-}
-
-input {
-  font-size: 15px;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 15px;
 }
 
 #submit {
@@ -34,7 +34,24 @@ input {
   width: 17vw;
 }
 
+#submitsignup {
+  border-radius: 15px;
+  background-color: #222;
+  color: #FAFAFA;
+  padding: 20px;
+  width: 15vw;
+  margin-top: 25px;
+  font-size: 18px;
+  border: none;
+  opacity: .8;
+}
+
 #submit:hover {
+  background-color: #FAFAFA;
+  color: #222;
+}
+
+#submitsignup:hover {
   background-color: #FAFAFA;
   color: #222;
 }

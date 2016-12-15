@@ -1,10 +1,10 @@
 body{
   /*background-image: url('');*/
-  background-color: #222;
-  color: white;
+  background-color: #FAFAFA;
+  color: #222;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -19,35 +19,50 @@ body{
 }
 
 #title {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 input {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  padding: 8px;
+  background-color: #222;
+  color: #FAFAFA;
+  width: 6vw;
+  font-size: 15px;
+}
+
+input:hover {
+  background-color: #FAFAFA;
+  color: #222;
 }
 
 #username {
-   margin-top: 5%;
+   margin-top: 7%;
+   margin-bottom: 1%;
    font-weight: bold;
-   font-size: 30px;
+   font-size: 45px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
   margin-top: 20px;
 }
 
 a {
   /*text-decoration: none;*/
-  color: white;
+  color: #222;
 }
 
 p {
   padding-bottom: 2px;
 }
+
+

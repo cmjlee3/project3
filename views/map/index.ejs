@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/map.css">
   </head>
@@ -23,10 +24,6 @@
       <% } %>
   </div>
 
-<!-- <div id='mapContainer'>
-  <div id="map"></div>
-  </div>
- -->
 <link href="https://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDu1zOGCMJEMn2Ja45WRuyWFN_Rv7ZSh3c"></script>
 
@@ -35,35 +32,6 @@
     var geocoder;
     var map;
     var gmarkers = [];
-
-    // function getAllMyMarkers() {
-    //   fetch('/map/allmarkers', {
-    //     method: 'GET',
-    //     credentials: 'include',
-    //     headers: {
-    //       'Content-Type' : 'application/json'
-    //     },
-    //     body: JSON.stringify(place)
-    //   })
-    //   .then(r => r.json())
-    //   .then((data) => {
-    //      // results = data
-    //    console.log('=====',data)
-    //       for( i = 0; i < allMapMarkers.length; i++ ) {
-    //         var position = new google.maps.LatLng(allMapMarkers.lat, allMapMarkers.long);
-    //         bounds.extend(position);
-    //         marker = new google.maps.Marker({
-    //           position: position,
-    //           map: map,
-    //           title: markers[i].title
-    //       });
-    //           gmarkers.push(marker);
-    //       }
-
-    //   })
-    //    .catch(err => console.log(err));
-    // }
-    // create for loop or for each in .then with allMapMarkers
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
@@ -89,6 +57,9 @@
                   map: map,
                   title: allMapMarkers[i].place.name
                 });
+
+// NEED TO CREATE INFOBOXES IN LOOP:
+
                 // console.log('marker._id');
               //    var infowindow = new google.maps.InfoWindow({
               //     content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
@@ -100,22 +71,9 @@
               //   infowindow.open(map, this);
               // });
 
-                gmarkers.push(marker);
-              }
-
-         // NEED TO CREATE INFOBOXES IN LOOP:
-
-         // var infowindow = new google.maps.InfoWindow({
-
-         //  content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
-         //      //GIVING ERROR: Cannot GET /map/delete/undefined?
-         //    maxWidth: 60
-         //  });
-
-         //  google.maps.event.addListener(marker, "click", function() {
-         //  console.log('clicked!! yay')   // infowindow.setContent(this.html);
-         //  infowindow.open(map, this); });
-        }
+              gmarkers.push(marker);
+            }
+      }
 
 
     function codeAddress(event) {
@@ -141,84 +99,78 @@
           console.log('inside codeAddress', marker._id);
           var infowindow = new google.maps.InfoWindow({
 
+//DELETE FOR INFO BOX:
+
               // content: `<form action ="/map/delete/${marker._id}?_method=DELETE"><input type="submit" value="Delete"></form>`,
               //GIVING ERROR: Cannot GET /map/delete/undefined?
 
               maxWidth: 60
             });
 
-          google.maps.event.addListener(marker, "click", function() {
-          console.log('clicked!! yay')   // infowindow.setContent(this.html);
-          infowindow.open(map, this); });
+        google.maps.event.addListener(marker, "click", function() {
+        console.log('clicked!! yay')   // infowindow.setContent(this.html);
+        infowindow.open(map, this); });
 
-          map.setCenter(marker.position);
-          marker.setMap(map);
+        map.setCenter(marker.position);
+        marker.setMap(map);
 
-          const place = {
-            name: address,
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng()
-          }
-          console.log(place);
+        const place = {
+          name: address,
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng()
+        }
+        console.log(place);
 
-          // do a POST fetch call AND SEND THE "place" as the body
-          fetch('/map/markers', {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(place)
-          })
-          .catch(err => console.log(err));
+        // do a POST fetch call AND SEND THE "place" as the body
+        fetch('/map/markers', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(place)
+        })
+        .catch(err => console.log(err));
 
-          } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
-       });
-     }
-
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+     });
+   }
 
 </script>
 
 <style type="text/css">
     #controls {
-    position: relative;
-    bottom: 1em;
-    width: 400px;
-    display: inline-block;
+      position: relative;
+      bottom: 1em;
+      width: 400px;
+      display: inline-block;
     /*padding: 0 0.5em 0.5em 0.5em;*/
     }
     html, body, #map_canvas {
-            margin: 0 auto;
-            width: 95%;
-            height: 100%;
+      margin: 0 auto;
+      margin-bottom: 100px;
+      width: 95%;
+      height: 90%;
     }
+
 </style>
 
-<body onLoad="initialize()">
-<h1>Places you've been:</h1><br>
-  <div id="controls">
-  <input id="address" type="textbox" name="listing[city]" placeholder="City">
-  <input id="description" type="textbox" name="listing[description]" placeholder="Description (optional)">
-  <input type="button" value="Submit" onClick="codeAddress()">
+  <body onLoad="initialize()">
+  <h1>Places traveled to:</h1><br>
+    <div id="controls">
+      <input id="address" type="textbox" name="listing[city]" placeholder="City">
+      <input id="description" type="textbox" name="listing[description]" placeholder="Description (optional)">
+      <input type="button" value="Submit" onClick="codeAddress()">
+    </div>
 
-  </div>
-  </div>
-  <br>
+<!--   1. I want the submit to take the location and description and store it into mongo so that next time the same user logs in/page is refreshed the markers stay put. -->
+  <!-- 2. Take those saved pieces of info and have them load in the info window -->
+  <!-- 3. Create put and delete in the info boxes ( maybe only description will work) -->
+  <!-- 4. have the bucket list data saved -->
 
-  1. I want the submit to take the location and description and store it into mongo so that next time the same user logs in/page is refreshed the markers stay put.
-  2. Take those saved pieces of info and have them load in the info window
-  3. Create put and delete in the info boxes ( maybe only description will work)
-  4. Create bucket list hover effect
-  5. when hovered inputs will appear for user to put in their bucket list destinations
-  6. create markers in different colors to pop up on page
-  7. have the bucket list data saved
-
-
-create save in infobox to then store into mongo
-
-<div id="map_canvas"></div>
+  <div id="map_canvas"></div>
 
   </body>
 </html>

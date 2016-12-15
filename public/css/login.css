@@ -25,25 +25,27 @@ h1 {
 }
 
 h2 {
-  font-size: 7vw;
+  font-size: 8vw;
   color: black;
   margin-top: 5vh;
 
 }
 
 input {
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 2vw;
-  padding: 15px;
+  padding: 12px;
   margin-top: 4vh;
   width: 15vw;
 }
 
 #submit {
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #222;
   color: #FAFAFA;
   width: 18vw;
+  opacity: .8;
+  border: none;
 }
 
 #submit:hover {
