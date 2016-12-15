@@ -7,8 +7,7 @@
   </head>
 <body>
 
-    <h1 id="username">Hello <%= user.username %>!</h1>
-
+  <h1 id="username">Hello <%= user.username %>!</h1>
     <form action="/auth?_method=DELETE" method="post">
       <input type="submit" value="Logout">
     </form>
@@ -29,8 +28,7 @@
       </div>
     <% }) %>
 
-    <h1 id='title'>Places you have indicated interest:<h1>
-
+  <h1 id='title'>Places you have indicated interest:<h1>
     <% myFavorites.forEach((listing) => { %>
       <div class="listingContainer">
         <p><%= listing %></p>
@@ -42,7 +40,6 @@
 
       </div>
     <% }) %>
-
 
   </body>
 </html>

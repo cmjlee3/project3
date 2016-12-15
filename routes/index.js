@@ -1,5 +1,3 @@
-// This is the index controller. It handles all three of the routes located in the index controller.
-
 const express = require('express');
 
 const indexRouter = express.Router();

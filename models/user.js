@@ -1,3 +1,5 @@
+//THANK YOU TO INSTRUCTORS FOR AUTH AND USER LOGIN MATERIAL:
+
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 

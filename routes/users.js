@@ -1,3 +1,5 @@
+//THANK YOU TO INSTRUCTORS FOR AUTH AND USER LOGIN MATERIAL:
+
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 
 const express      = require('express');

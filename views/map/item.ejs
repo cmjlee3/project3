@@ -30,15 +30,11 @@
 
     <form action="/save" method="POST">
       <input type="hidden" name="listing[_id]" value="<%= listing._id %>">
-      <input type="hidden" name="listing[sellerId]" value="<%= listing.sellerId %>">
       <input type="hidden" name="listing[username]" value="<%= listing.username %>">
       <input type="hidden" name="listing[location]" value="<%= listing.location %>">
-      <input type="hidden" name="listing[price]" value="<%= listing.price %>">
       <input type="hidden" name="listing[description]" value="<%= listing.description %>">
-      <input type="hidden" name="listing[tel]" value="<%= listing.tel %>">
       <input type="hidden" name="listing[email]" value="<%= listing.email %>">
       <input type='hidden' name='listing[accuracy]' value='<%= listing.accuracy %>'><br>
-
       <input type="submit" value="Indicate Interest">
     </form>
   </div>

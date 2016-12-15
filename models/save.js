@@ -32,7 +32,7 @@ function saveUserToLoc(req, res, next) { // saves a USER TO LOC
   return false;
 }
 
-function deleteLocation(req, res, next) {
+function deleteLocation(req, res, next) { //DELETES LOCATION FROM TRACKED PLACES
   getDB().then((db) => {
     db.collection('users')
       .update({ _id: ObjectID(req.session.userId) }, { $pull: { favoriteListings: req.params.id } }, (removeErr, result) => {
